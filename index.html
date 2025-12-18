@@ -662,24 +662,24 @@
 
     const feesRecouped = bookingAmount * payoutRate * rebateRate;
 
-    const payrollRecoupedRaw = calcAnnualPayrollCost(invoicesPerMonth);
-    const payrollRecouped = payrollRecoupedRaw * 0.90;
+    const manualInvoiceProcessingCost = calcAnnualPayrollCost(invoicesPerMonth);
+    const invoiceProcessingSavings = manualInvoiceProcessingCost * 0.90;
 
     const revenuePerBooking = adr * avgStay;
-    const totalValueRecouped = feesRecouped + payrollRecouped;
+    const totalValueRecouped = feesRecouped + invoiceProcessingSavings;
     const bookingsRecouped = revenuePerBooking > 0 ? totalValueRecouped / revenuePerBooking : 0;
     const roomNightsRecouped = bookingsRecouped * avgStay;
 
     document.getElementById("recoveryFeesOut").textContent =
       feesRecouped > 0 ? formatCurrency(feesRecouped, currency) : "-";
     document.getElementById("recoveryPayrollOut").textContent =
-      payrollRecoupedRaw > 0 ? formatCurrency(payrollRecoupedRaw, currency) : "-";
+      invoiceProcessingSavings > 0 ? formatCurrency(invoiceProcessingSavings, currency) : "-";
     document.getElementById("recoveryBookingsOut").textContent =
       bookingsRecouped > 0 ? bookingsRecouped.toFixed(0) : "-";
     document.getElementById("recoveryRoomNightsOut").textContent =
       roomNightsRecouped > 0 ? roomNightsRecouped.toFixed(0) : "-";
 
-    // Equivalent reduced credit card fee (adjusted by payroll recouped as well)
+    // Equivalent reduced credit card fee (adjusted by invoice processing savings as well)
     let effectiveFeeDisplay = "-";
     if (bookingAmount > 0 && processingFee > 0) {
       const offsetPercent = (totalValueRecouped / bookingAmount) * 100;
