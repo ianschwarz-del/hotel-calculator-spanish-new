@@ -5,6 +5,7 @@
   <title>Hotel Bookings Recoup Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Calcule cuánto ingreso por reservas puede recuperar su hotel a través de la solución de One Journey.">
+
   <style>
     :root {
       --bg: #f5f5f7;
@@ -17,7 +18,6 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text-main);
@@ -35,57 +35,30 @@
       background: var(--card-bg);
       border-radius: 14px;
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
-      padding: 22px 20px 20px;
+      padding: 22px 20px;
     }
     .header {
-      margin-bottom: 16px;
       text-align: center;
+      margin-bottom: 16px;
       position: relative;
     }
-    .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+    .logo img { height: 44px; }
     .language-switch {
       position: absolute;
       top: 0;
       right: 0;
-      font-size: 11px;
     }
-    .language-switch select {
-      padding: 3px 8px;
-      font-size: 11px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #fff;
-    }
-    h1 {
-      font-size: 20px;
-      margin: 0 0 4px;
-    }
-    .subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin: 0;
-    }
-    .form-section {
-      margin-top: 16px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-    }
-    label {
-      font-size: 12px;
-      margin-bottom: 4px;
-      display: block;
-    }
-    input, select {
+    select, input {
       width: 100%;
       padding: 8px 10px;
       border-radius: 8px;
       border: 1px solid #d1d5db;
       margin-bottom: 10px;
+    }
+    label {
+      font-size: 12px;
+      margin-bottom: 4px;
+      display: block;
     }
     .row {
       display: flex;
@@ -119,20 +92,18 @@
     .metric-value {
       font-weight: 600;
     }
-    .metric-divider {
+    .divider {
       border-top: 1px dotted var(--border);
       margin: 10px 0;
-    }
-    .divider-or {
       text-align: center;
       font-size: 12px;
       color: var(--text-muted);
     }
-    .results.recovery {
+    .recovery {
       background: rgba(182, 245, 168, 0.75);
       border-radius: 12px;
-      margin-top: 20px;
       padding: 20px 12px;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -143,7 +114,7 @@
 
   <div class="header">
     <div class="logo">
-      <img src="https://raw.githubusercontent.com/ianschwarz-del/hotel-bookings-recoup-calculator/refs/heads/main/logo.svg" height="44">
+      <img src="https://raw.githubusercontent.com/ianschwarz-del/hotel-bookings-recoup-calculator/refs/heads/main/logo.svg">
     </div>
     <div class="language-switch">
       <select id="language">
@@ -155,113 +126,152 @@
       </select>
     </div>
     <h1 id="titleText"></h1>
-    <p class="subtitle" id="subtitleText"></p>
+    <p id="subtitleText"></p>
   </div>
 
-  <div class="form-section">
-    <label id="currencyLabel"></label>
-    <select id="currency">
-      <option value="USD">USD</option>
-      <option value="EUR" selected>EUR</option>
-      <option value="GBP">GBP</option>
-      <option value="AED">AED</option>
-      <option value="CAD">CAD</option>
-    </select>
+  <label id="currencyLabel"></label>
+  <select id="currency">
+    <option value="USD">USD</option>
+    <option value="EUR" selected>EUR</option>
+    <option value="GBP">GBP</option>
+    <option value="AED">AED</option>
+    <option value="CAD">CAD</option>
+  </select>
 
-    <label id="vendorLabel"></label>
-    <input id="vendorSpend">
+  <label id="vendorLabel"></label>
+  <input id="vendorSpend">
 
-    <label id="processingFeeLabel"></label>
-    <input id="processingFee">
+  <label id="processingFeeLabel"></label>
+  <input id="processingFee">
 
-    <div class="row">
-      <div class="field">
-        <label id="adrLabel"></label>
-        <input id="adr" type="number">
-      </div>
-      <div class="field">
-        <label id="avgStayLabel"></label>
-        <input id="avgStay" type="number">
-      </div>
+  <div class="row">
+    <div class="field">
+      <label id="adrLabel"></label>
+      <input id="adr" type="number">
     </div>
-
-    <label id="invoicesPerMonthLabel"></label>
-    <input id="invoicesPerMonth" type="number">
-
-    <label id="commissionStatementsPerMonthLabel"></label>
-    <input id="commissionStatementsPerMonth" type="number">
-
-    <div class="results" id="results" style="display:none;">
-      <h2 id="impactHeading"></h2>
-
-      <div class="metric">
-        <div class="metric-label" id="impactFeesLabel"></div>
-        <div class="metric-value" id="feesPaidOut"></div>
-      </div>
-
-      <div class="metric">
-        <div class="metric-label" id="impactPayrollLabel">
-          Cost of Manual Invoice and Commission Processing
-        </div>
-        <div class="metric-value" id="impactPayrollOut"></div>
-      </div>
-
-      <div class="metric-divider"></div>
-      <div class="divider-or">OR</div>
-
-      <div class="metric">
-        <div class="metric-label" id="impactBookingsLabel"></div>
-        <div class="metric-value" id="bookingsLostOut"></div>
-      </div>
-
-      <div class="metric">
-        <div class="metric-label" id="impactNightsLabel"></div>
-        <div class="metric-value" id="roomNightsLostOut"></div>
-      </div>
-    </div>
-
-    <button class="btn" id="calcBtn"></button>
-
-    <div class="results recovery" id="recovery" style="display:none;">
-      <h2 id="recoveryHeading"></h2>
-
-      <div class="metric">
-        <div class="metric-label" id="recoveryFeesLabel"></div>
-        <div class="metric-value" id="recoveryFeesOut"></div>
-      </div>
-
-      <div class="metric">
-        <div class="metric-label" id="recoveryPayrollLabel">
-          Cost Savings on Invoice and Commission Processing
-        </div>
-        <div class="metric-value" id="recoveryPayrollOut"></div>
-      </div>
-
-      <div class="metric-divider"></div>
-      <div class="divider-or">OR</div>
-
-      <div class="metric">
-        <div class="metric-label" id="recoveryEffectiveFeeLabel"></div>
-        <div class="metric-value" id="recoveryEffectiveFeeOut"></div>
-      </div>
-
-      <div class="metric">
-        <div class="metric-label" id="recoveryBookingsLabel"></div>
-        <div class="metric-value" id="recoveryBookingsOut"></div>
-      </div>
-
-      <div class="metric">
-        <div class="metric-label" id="recoveryNightsLabel"></div>
-        <div class="metric-value" id="recoveryRoomNightsOut"></div>
-      </div>
+    <div class="field">
+      <label id="avgStayLabel"></label>
+      <input id="avgStay" type="number">
     </div>
   </div>
+
+  <label id="invoicesPerMonthLabel"></label>
+  <input id="invoicesPerMonth" type="number">
+
+  <label id="commissionStatementsPerMonthLabel"></label>
+  <input id="commissionStatementsPerMonth" type="number">
+
+  <div class="results" id="impact" style="display:none;">
+    <h2 id="impactHeading"></h2>
+
+    <div class="metric">
+      <div class="metric-label" id="impactFeesLabel"></div>
+      <div class="metric-value" id="feesPaidOut"></div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label" id="impactPayrollLabel">
+        Cost of Manual Invoice and Commission Processing
+      </div>
+      <div class="metric-value" id="impactPayrollOut"></div>
+    </div>
+
+    <div class="divider">OR</div>
+
+    <div class="metric">
+      <div class="metric-label" id="impactBookingsLabel"></div>
+      <div class="metric-value" id="bookingsLostOut"></div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label" id="impactNightsLabel"></div>
+      <div class="metric-value" id="roomNightsLostOut"></div>
+    </div>
+  </div>
+
+  <button class="btn" id="calcBtn"></button>
+
+  <div class="results recovery" id="recovery" style="display:none;">
+    <h2 id="recoveryHeading"></h2>
+
+    <div class="metric">
+      <div class="metric-label" id="recoveryFeesLabel"></div>
+      <div class="metric-value" id="recoveryFeesOut"></div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label" id="recoveryPayrollLabel">
+        Cost Savings on Invoice and Commission Processing
+      </div>
+      <div class="metric-value" id="recoveryPayrollOut"></div>
+    </div>
+
+    <div class="divider">OR</div>
+
+    <div class="metric">
+      <div class="metric-label" id="recoveryEffectiveFeeLabel"></div>
+      <div class="metric-value" id="recoveryEffectiveFeeOut"></div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label" id="recoveryBookingsLabel"></div>
+      <div class="metric-value" id="recoveryBookingsOut"></div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label" id="recoveryNightsLabel"></div>
+      <div class="metric-value" id="recoveryRoomNightsOut"></div>
+    </div>
+  </div>
+
 </div>
 </div>
 
 <script>
-/* Calculator logic unchanged — omitted here for brevity in explanation,
-   but this is the SAME working logic you already validated */
+function num(id){return parseFloat((document.getElementById(id).value||"").replace(/[^0-9.]/g,""))||0}
+function fmt(v,c){return new Intl.NumberFormat(undefined,{style:"currency",currency:c,maximumFractionDigits:0}).format(v)}
+
+function calc(){
+  const currency=document.getElementById("currency").value
+  const booking=num("vendorSpend")
+  const fee=num("processingFee")/100
+  const adr=num("adr")
+  const stay=num("avgStay")
+  const invoices=num("invoicesPerMonth")
+  const commissions=num("commissionStatementsPerMonth")
+
+  if(!(booking&&fee&&adr&&stay))return
+
+  const ccFees=booking*fee
+
+  const invoiceAnnual=invoices*12*(17/60)*30
+  const commissionAnnual=commissions*12*2*30
+  const payrollAnnual=invoiceAnnual+commissionAnnual
+
+  const revenuePerBooking=adr*stay
+  const impactValue=ccFees+payrollAnnual
+
+  document.getElementById("feesPaidOut").textContent=fmt(ccFees,currency)
+  document.getElementById("impactPayrollOut").textContent=fmt(payrollAnnual,currency)
+  document.getElementById("bookingsLostOut").textContent=Math.round(impactValue/revenuePerBooking)
+  document.getElementById("roomNightsLostOut").textContent=Math.round((impactValue/revenuePerBooking)*stay)
+
+  const payout=(currency==="USD"||currency==="CAD")?0.7:0.85
+  const recoup=booking*payout*0.0125
+  const savings=payrollAnnual*0.9
+  const total=recoup+savings
+
+  document.getElementById("recoveryFeesOut").textContent=fmt(recoup,currency)
+  document.getElementById("recoveryPayrollOut").textContent=fmt(savings,currency)
+  document.getElementById("recoveryBookingsOut").textContent=Math.round(total/revenuePerBooking)
+  document.getElementById("recoveryRoomNightsOut").textContent=Math.round((total/revenuePerBooking)*stay)
+  document.getElementById("recoveryEffectiveFeeOut").textContent=Math.max(0,(fee*100-(total/booking)*100)).toFixed(2)+"%"
+
+  impact.style.display="block"
+  recovery.style.display="block"
+}
+
+calcBtn.onclick=calc
 </script>
 
 </body>
