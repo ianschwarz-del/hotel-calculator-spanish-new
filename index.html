@@ -163,7 +163,17 @@
     }
     .metric-divider {
       border-top: 1px dotted var(--border);
-      margin: 10px 0;
+      margin: 10px 0 6px;
+    }
+    .metric-divider.or-black {
+      border-top: 1px dotted #000;
+    }
+    .divider-or {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0 0 10px;
+      letter-spacing: 0.06em;
     }
     .cta {
       margin-top: 14px;
@@ -289,6 +299,7 @@
         </div>
 
         <div class="metric-divider"></div>
+        <div class="divider-or" id="impactOrText">OR</div>
 
         <div class="metric">
           <div class="metric-label" id="impactBookingsLabel">Equivalent Bookings Lost</div>
@@ -318,7 +329,8 @@
           <div class="metric-value" id="recoveryPayrollOut"></div>
         </div>
 
-        <div class="metric-divider"></div>
+        <div class="metric-divider or-black"></div>
+        <div class="divider-or" id="recoveryOrText">OR</div>
 
         <div class="metric">
           <div class="metric-label" id="recoveryEffectiveFeeLabel">Equivalent Reduced Credit Card Fee</div>
@@ -369,10 +381,12 @@
       impactBookingsLabel: "Equivalent Bookings Lost",
       impactNightsLabel: "Equivalent Room Nights Lost",
       impactPayrollLabel: "Cost of Manual Invoice Processing",
+      impactOrText: "OR",
       calcButton: "How much can I get back?",
       recoveryHeading: "Estimated Recovery with One Journey",
       recoveryFeesLabel: "Credit Card Fees Recouped",
       recoveryPayrollLabel: "Cost Savings on Invoice Processing",
+      recoveryOrText: "OR",
       recoveryEffectiveFeeLabel: "Equivalent Reduced Credit Card Fee",
       recoveryBookingsLabel: "Bookings Recouped",
       recoveryNightsLabel: "Room Nights Recouped",
@@ -398,10 +412,12 @@
       impactBookingsLabel: "Reservas equivalentes perdidas",
       impactNightsLabel: "Noches de habitación equivalentes perdidas",
       impactPayrollLabel: "Coste del procesamiento manual de facturas",
+      impactOrText: "O",
       calcButton: "¿Cuánto puedo recuperar?",
       recoveryHeading: "Recuperación estimada con One Journey",
       recoveryFeesLabel: "Comisiones de tarjeta recuperadas",
       recoveryPayrollLabel: "Ahorro de costes en el procesamiento de facturas",
+      recoveryOrText: "O",
       recoveryEffectiveFeeLabel: "Tasa equivalente de comisión de tarjeta reducida",
       recoveryBookingsLabel: "Reservas recuperadas",
       recoveryNightsLabel: "Noches de habitación recuperadas",
@@ -427,10 +443,12 @@
       impactBookingsLabel: "Réservations équivalentes perdues",
       impactNightsLabel: "Nuits de chambre équivalentes perdues",
       impactPayrollLabel: "Coût du traitement manuel des factures",
+      impactOrText: "OU",
       calcButton: "Combien puis-je récupérer ?",
       recoveryHeading: "Recouvrement estimé avec One Journey",
       recoveryFeesLabel: "Frais de carte bancaire récupérés",
       recoveryPayrollLabel: "Économies sur le traitement des factures",
+      recoveryOrText: "OU",
       recoveryEffectiveFeeLabel: "Commission carte bancaire équivalente réduite",
       recoveryBookingsLabel: "Réservations récupérées",
       recoveryNightsLabel: "Nuits de chambre récupérées",
@@ -456,10 +474,12 @@
       impactBookingsLabel: "Entgangene Buchungen (äquivalent)",
       impactNightsLabel: "Entgangene Übernachtungen (äquivalent)",
       impactPayrollLabel: "Kosten der manuellen Rechnungsverarbeitung",
+      impactOrText: "ODER",
       calcButton: "Wie viel kann ich zurückholen?",
       recoveryHeading: "Geschätzte Rückgewinnung mit One Journey",
       recoveryFeesLabel: "Zurückgewonnene Kreditkartengebühren",
       recoveryPayrollLabel: "Kosteneinsparungen bei der Rechnungsverarbeitung",
+      recoveryOrText: "ODER",
       recoveryEffectiveFeeLabel: "Entspricht einer reduzierten Kreditkartengebühr",
       recoveryBookingsLabel: "Zurückgewonnene Buchungen",
       recoveryNightsLabel: "Zurückgewonnene Übernachtungen",
@@ -485,10 +505,12 @@
       impactBookingsLabel: "الحجوزات المفقودة (مكافئة)",
       impactNightsLabel: "ليالي الغرف المفقودة (مكافئة)",
       impactPayrollLabel: "تكلفة معالجة الفواتير يدويًا",
+      impactOrText: "أو",
       calcButton: "كم يمكنني استعادته؟",
       recoveryHeading: "الاسترداد التقديري مع One Journey",
       recoveryFeesLabel: "رسوم بطاقات الائتمان المستردة",
       recoveryPayrollLabel: "توفير التكاليف في معالجة الفواتير",
+      recoveryOrText: "أو",
       recoveryEffectiveFeeLabel: "نسبة عمولة بطاقة ائتمان مخفضة مكافئة",
       recoveryBookingsLabel: "الحجوزات المستردة",
       recoveryNightsLabel: "ليالي الغرف المستردة",
@@ -524,12 +546,14 @@
     document.getElementById("impactBookingsLabel").textContent = t.impactBookingsLabel;
     document.getElementById("impactNightsLabel").textContent = t.impactNightsLabel;
     document.getElementById("impactPayrollLabel").textContent = t.impactPayrollLabel;
+    document.getElementById("impactOrText").textContent = t.impactOrText;
 
     document.getElementById("calcBtn").textContent = t.calcButton;
 
     document.getElementById("recoveryHeading").textContent = t.recoveryHeading;
     document.getElementById("recoveryFeesLabel").textContent = t.recoveryFeesLabel;
     document.getElementById("recoveryPayrollLabel").textContent = t.recoveryPayrollLabel;
+    document.getElementById("recoveryOrText").textContent = t.recoveryOrText;
     document.getElementById("recoveryEffectiveFeeLabel").textContent = t.recoveryEffectiveFeeLabel;
     document.getElementById("recoveryBookingsLabel").textContent = t.recoveryBookingsLabel;
     document.getElementById("recoveryNightsLabel").textContent = t.recoveryNightsLabel;
@@ -638,7 +662,8 @@
 
     const feesRecouped = bookingAmount * payoutRate * rebateRate;
 
-    const payrollRecouped = calcAnnualPayrollCost(invoicesPerMonth);
+    const payrollRecoupedRaw = calcAnnualPayrollCost(invoicesPerMonth);
+    const payrollRecouped = payrollRecoupedRaw * 0.90;
 
     const revenuePerBooking = adr * avgStay;
     const totalValueRecouped = feesRecouped + payrollRecouped;
@@ -648,7 +673,7 @@
     document.getElementById("recoveryFeesOut").textContent =
       feesRecouped > 0 ? formatCurrency(feesRecouped, currency) : "-";
     document.getElementById("recoveryPayrollOut").textContent =
-      payrollRecouped > 0 ? formatCurrency(payrollRecouped, currency) : "-";
+      payrollRecoupedRaw > 0 ? formatCurrency(payrollRecoupedRaw, currency) : "-";
     document.getElementById("recoveryBookingsOut").textContent =
       bookingsRecouped > 0 ? bookingsRecouped.toFixed(0) : "-";
     document.getElementById("recoveryRoomNightsOut").textContent =
