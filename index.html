@@ -161,6 +161,10 @@
       font-weight: 600;
       text-align: right;
     }
+    .metric-divider {
+      border-top: 1px dotted var(--border);
+      margin: 10px 0;
+    }
     .cta {
       margin-top: 14px;
       text-align: center;
@@ -267,7 +271,7 @@
       </div>
 
       <!-- NEW INPUT -->
-      <label for="invoicesPerMonth" id="invoicesPerMonthLabel">How many invoices do you process per month?</label>
+      <label for="invoicesPerMonth" id="invoicesPerMonthLabel">How many invoices do you process or reconcile per month?</label>
       <input id="invoicesPerMonth" type="number" min="0" step="1" placeholder="e.g. 500">
 
       <!-- Step 1: Estimated Impact -->
@@ -280,6 +284,13 @@
         </div>
 
         <div class="metric">
+          <div class="metric-label" id="impactPayrollLabel">Cost of Manual Invoice Processing</div>
+          <div class="metric-value" id="impactPayrollOut"></div>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <div class="metric">
           <div class="metric-label" id="impactBookingsLabel">Equivalent Bookings Lost</div>
           <div class="metric-value" id="bookingsLostOut"></div>
         </div>
@@ -287,12 +298,6 @@
         <div class="metric">
           <div class="metric-label" id="impactNightsLabel">Equivalent Room Nights Lost</div>
           <div class="metric-value" id="roomNightsLostOut"></div>
-        </div>
-
-        <!-- NEW OUTPUT -->
-        <div class="metric">
-          <div class="metric-label" id="impactPayrollLabel">Equivalent Payroll Spent</div>
-          <div class="metric-value" id="impactPayrollOut"></div>
         </div>
       </div>
 
@@ -308,11 +313,12 @@
           <div class="metric-value" id="recoveryFeesOut"></div>
         </div>
 
-        <!-- NEW OUTPUT -->
         <div class="metric">
-          <div class="metric-label" id="recoveryPayrollLabel">Payroll Costs Recouped</div>
+          <div class="metric-label" id="recoveryPayrollLabel">Cost Savings on Invoice Processing</div>
           <div class="metric-value" id="recoveryPayrollOut"></div>
         </div>
+
+        <div class="metric-divider"></div>
 
         <div class="metric">
           <div class="metric-label" id="recoveryEffectiveFeeLabel">Equivalent Reduced Credit Card Fee</div>
@@ -352,7 +358,7 @@
       processingFeeLabel: "What is the average credit card processing fee? (%)",
       adrLabel: "Average daily rate (ADR)",
       avgStayLabel: "Average length of stay",
-      invoicesPerMonthLabel: "How many invoices do you process per month?",
+      invoicesPerMonthLabel: "How many invoices do you process or reconcile per month?",
       vendorPlaceholder: "e.g. $6,400,000",
       feePlaceholder: "e.g. 2.9%",
       adrPlaceholder: "e.g. 150",
@@ -362,11 +368,11 @@
       impactFeesLabel: "Credit Card Fees Paid",
       impactBookingsLabel: "Equivalent Bookings Lost",
       impactNightsLabel: "Equivalent Room Nights Lost",
-      impactPayrollLabel: "Equivalent Payroll Spent",
+      impactPayrollLabel: "Cost of Manual Invoice Processing",
       calcButton: "How much can I get back?",
       recoveryHeading: "Estimated Recovery with One Journey",
       recoveryFeesLabel: "Credit Card Fees Recouped",
-      recoveryPayrollLabel: "Payroll Costs Recouped",
+      recoveryPayrollLabel: "Cost Savings on Invoice Processing",
       recoveryEffectiveFeeLabel: "Equivalent Reduced Credit Card Fee",
       recoveryBookingsLabel: "Bookings Recouped",
       recoveryNightsLabel: "Room Nights Recouped",
@@ -381,7 +387,7 @@
       processingFeeLabel: "¿Tasa de descuento? (%)",
       adrLabel: "Tarifa diaria promedio (ADR)",
       avgStayLabel: "Estancia media (noches)",
-      invoicesPerMonthLabel: "¿Cuántas facturas procesa al mes?",
+      invoicesPerMonthLabel: "¿Cuántas facturas procesa o concilia al mes?",
       vendorPlaceholder: "p. ej. $6,400,000",
       feePlaceholder: "p. ej. 2.9%",
       adrPlaceholder: "p. ej. 150",
@@ -391,11 +397,11 @@
       impactFeesLabel: "Comisiones de tarjeta pagadas",
       impactBookingsLabel: "Reservas equivalentes perdidas",
       impactNightsLabel: "Noches de habitación equivalentes perdidas",
-      impactPayrollLabel: "Gasto salarial equivalente",
+      impactPayrollLabel: "Coste del procesamiento manual de facturas",
       calcButton: "¿Cuánto puedo recuperar?",
       recoveryHeading: "Recuperación estimada con One Journey",
       recoveryFeesLabel: "Comisiones de tarjeta recuperadas",
-      recoveryPayrollLabel: "Costes salariales recuperados",
+      recoveryPayrollLabel: "Ahorro de costes en el procesamiento de facturas",
       recoveryEffectiveFeeLabel: "Tasa equivalente de comisión de tarjeta reducida",
       recoveryBookingsLabel: "Reservas recuperadas",
       recoveryNightsLabel: "Noches de habitación recuperadas",
@@ -410,7 +416,7 @@
       processingFeeLabel: "Quel est le taux moyen de commission carte bancaire ? (%)",
       adrLabel: "Tarif journalier moyen (ADR)",
       avgStayLabel: "Durée moyenne de séjour",
-      invoicesPerMonthLabel: "Combien de factures traitez-vous par mois ?",
+      invoicesPerMonthLabel: "Combien de factures traitez-vous ou rapprochez-vous par mois ?",
       vendorPlaceholder: "ex. 6 400 000 €",
       feePlaceholder: "ex. 2,9 %",
       adrPlaceholder: "ex. 150",
@@ -420,11 +426,11 @@
       impactFeesLabel: "Frais de carte bancaire payés",
       impactBookingsLabel: "Réservations équivalentes perdues",
       impactNightsLabel: "Nuits de chambre équivalentes perdues",
-      impactPayrollLabel: "Coût salarial équivalent",
+      impactPayrollLabel: "Coût du traitement manuel des factures",
       calcButton: "Combien puis-je récupérer ?",
       recoveryHeading: "Recouvrement estimé avec One Journey",
       recoveryFeesLabel: "Frais de carte bancaire récupérés",
-      recoveryPayrollLabel: "Coûts salariaux récupérés",
+      recoveryPayrollLabel: "Économies sur le traitement des factures",
       recoveryEffectiveFeeLabel: "Commission carte bancaire équivalente réduite",
       recoveryBookingsLabel: "Réservations récupérées",
       recoveryNightsLabel: "Nuits de chambre récupérées",
@@ -439,7 +445,7 @@
       processingFeeLabel: "Wie hoch ist die durchschnittliche Kreditkartengebühr? (%)",
       adrLabel: "Durchschnittlicher Tagespreis (ADR)",
       avgStayLabel: "Durchschnittliche Aufenthaltsdauer",
-      invoicesPerMonthLabel: "Wie viele Rechnungen bearbeiten Sie pro Monat?",
+      invoicesPerMonthLabel: "Wie viele Rechnungen bearbeiten oder stimmen Sie pro Monat ab?",
       vendorPlaceholder: "z. B. 6.400.000 €",
       feePlaceholder: "z. B. 2,9 %",
       adrPlaceholder: "z. B. 150",
@@ -449,11 +455,11 @@
       impactFeesLabel: "Gezahlte Kreditkartengebühren",
       impactBookingsLabel: "Entgangene Buchungen (äquivalent)",
       impactNightsLabel: "Entgangene Übernachtungen (äquivalent)",
-      impactPayrollLabel: "Entsprechende Personalkosten",
+      impactPayrollLabel: "Kosten der manuellen Rechnungsverarbeitung",
       calcButton: "Wie viel kann ich zurückholen?",
       recoveryHeading: "Geschätzte Rückgewinnung mit One Journey",
       recoveryFeesLabel: "Zurückgewonnene Kreditkartengebühren",
-      recoveryPayrollLabel: "Zurückgewonnene Personalkosten",
+      recoveryPayrollLabel: "Kosteneinsparungen bei der Rechnungsverarbeitung",
       recoveryEffectiveFeeLabel: "Entspricht einer reduzierten Kreditkartengebühr",
       recoveryBookingsLabel: "Zurückgewonnene Buchungen",
       recoveryNightsLabel: "Zurückgewonnene Übernachtungen",
@@ -468,7 +474,7 @@
       processingFeeLabel: "ما هي نسبة عمولة بطاقة الائتمان المتوسطة؟ (%)",
       adrLabel: "متوسط السعر اليومي للغرفة",
       avgStayLabel: "متوسط مدة الإقامة",
-      invoicesPerMonthLabel: "كم عدد الفواتير التي تعالجها شهريًا؟",
+      invoicesPerMonthLabel: "كم عدد الفواتير التي تعالجها أو توفقها شهريًا؟",
       vendorPlaceholder: "مثال: ‎6,400,000‎",
       feePlaceholder: "مثال: ‎2.9%‎",
       adrPlaceholder: "مثال: ‎150‎",
@@ -478,11 +484,11 @@
       impactFeesLabel: "رسوم بطاقات الائتمان المدفوعة",
       impactBookingsLabel: "الحجوزات المفقودة (مكافئة)",
       impactNightsLabel: "ليالي الغرف المفقودة (مكافئة)",
-      impactPayrollLabel: "تكلفة رواتب مكافئة",
+      impactPayrollLabel: "تكلفة معالجة الفواتير يدويًا",
       calcButton: "كم يمكنني استعادته؟",
       recoveryHeading: "الاسترداد التقديري مع One Journey",
       recoveryFeesLabel: "رسوم بطاقات الائتمان المستردة",
-      recoveryPayrollLabel: "تكاليف الرواتب المستردة",
+      recoveryPayrollLabel: "توفير التكاليف في معالجة الفواتير",
       recoveryEffectiveFeeLabel: "نسبة عمولة بطاقة ائتمان مخفضة مكافئة",
       recoveryBookingsLabel: "الحجوزات المستردة",
       recoveryNightsLabel: "ليالي الغرف المستردة",
@@ -596,20 +602,21 @@
     const feeRate = processingFee / 100;
     const feesPaid = bookingAmount * feeRate;
 
-    const revenuePerBooking = adr * avgStay;
-    const bookingsLost = revenuePerBooking > 0 ? feesPaid / revenuePerBooking : 0;
-    const roomNightsLost = bookingsLost * avgStay;
-
     const payrollSpent = calcAnnualPayrollCost(invoicesPerMonth);
+
+    const revenuePerBooking = adr * avgStay;
+    const totalImpactValue = feesPaid + payrollSpent;
+    const bookingsLost = revenuePerBooking > 0 ? totalImpactValue / revenuePerBooking : 0;
+    const roomNightsLost = bookingsLost * avgStay;
 
     document.getElementById("feesPaidOut").textContent =
       formatCurrency(feesPaid, currency);
+    document.getElementById("impactPayrollOut").textContent =
+      payrollSpent > 0 ? formatCurrency(payrollSpent, currency) : "-";
     document.getElementById("bookingsLostOut").textContent =
       bookingsLost > 0 ? bookingsLost.toFixed(0) : "-";
     document.getElementById("roomNightsLostOut").textContent =
       roomNightsLost > 0 ? roomNightsLost.toFixed(0) : "-";
-    document.getElementById("impactPayrollOut").textContent =
-      payrollSpent > 0 ? formatCurrency(payrollSpent, currency) : "-";
 
     resultsEl.style.display = "block";
   }
@@ -634,7 +641,8 @@
     const payrollRecouped = calcAnnualPayrollCost(invoicesPerMonth);
 
     const revenuePerBooking = adr * avgStay;
-    const bookingsRecouped = revenuePerBooking > 0 ? feesRecouped / revenuePerBooking : 0;
+    const totalValueRecouped = feesRecouped + payrollRecouped;
+    const bookingsRecouped = revenuePerBooking > 0 ? totalValueRecouped / revenuePerBooking : 0;
     const roomNightsRecouped = bookingsRecouped * avgStay;
 
     document.getElementById("recoveryFeesOut").textContent =
@@ -649,7 +657,6 @@
     // Equivalent reduced credit card fee (adjusted by payroll recouped as well)
     let effectiveFeeDisplay = "-";
     if (bookingAmount > 0 && processingFee > 0) {
-      const totalValueRecouped = feesRecouped + payrollRecouped;
       const offsetPercent = (totalValueRecouped / bookingAmount) * 100;
       let effectiveFee = processingFee - offsetPercent;
       if (effectiveFee < 0) effectiveFee = 0;
