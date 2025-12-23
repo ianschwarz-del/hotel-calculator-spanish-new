@@ -259,10 +259,18 @@
         <option value="MXN">MXN ($)</option>
       </select>
 
+      <label for="numProperties" id="numPropertiesLabel">Number of Properties</label>
+      <input id="numProperties" type="number" min="1" step="1" placeholder="e.g. 1">
+
       <label for="vendorSpend" id="vendorLabel">
         Annual Booking Amount Paid on Credit Card by Guest or 3rd-party
       </label>
       <input id="vendorSpend" type="text" placeholder="e.g. $6,400,000">
+
+      <label for="nonBookingSpend" id="nonBookingLabel">
+        Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party
+      </label>
+      <input id="nonBookingSpend" type="text" placeholder="e.g. $250,000">
 
       <label for="processingFee" id="processingFeeLabel">
         What is the average credit card processing fee? (%)
@@ -280,7 +288,7 @@
         </div>
       </div>
 
-      <label for="invoicesPerMonth" id="invoicesPerMonthLabel">How many invoices do you process or reconcile per month?</label>
+      <label for="invoicesPerMonth" id="invoicesPerMonthLabel">How many non-commision invoices do you process or reconcile per month?</label>
       <input id="invoicesPerMonth" type="number" min="0" step="1" placeholder="e.g. 500">
 
       <label for="commissionStatementsPerMonth" id="commissionStatementsPerMonthLabel">How many commission statements do you reconcile each month?</label>
@@ -288,7 +296,7 @@
 
       <!-- Step 1: Estimated Impact -->
       <div class="results" id="results" style="display:none;">
-        <h2 id="impactHeading">Estimated Impact</h2>
+        <h2 id="impactHeading">Estimated Annual Revenue Loss</h2>
 
         <div class="metric">
           <div class="metric-label" id="impactFeesLabel">Credit Card Fees Paid</div>
@@ -318,7 +326,7 @@
 
       <!-- Step 2: Estimated Recovery with One Journey -->
       <div class="results recovery" id="recovery" style="display:none;">
-        <h2 id="recoveryHeading">Estimated Recovery with One Journey</h2>
+        <h2 id="recoveryHeading">Estimated Annual Recovery with One Journey</h2>
 
         <div class="metric">
           <div class="metric-label" id="recoveryFeesLabel">Credit Card Fees Recouped</div>
@@ -366,26 +374,30 @@
       subtitle: "Estimate how much booking revenue your hotel can earn back through<br>One Journey’s solution.",
       languageLabel: "Language",
       currencyLabel: "Currency",
+      numPropertiesLabel: "Number of Properties",
       vendorLabel: "Annual Booking Amount Paid on Credit Card by Guest or 3rd-party",
+      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
       processingFeeLabel: "What is the average credit card processing fee? (%)",
       adrLabel: "Average daily rate (ADR)",
       avgStayLabel: "Average length of stay",
-      invoicesPerMonthLabel: "How many invoices do you process or reconcile per month?",
+      invoicesPerMonthLabel: "How many non-commision invoices do you process or reconcile per month?",
       commissionStatementsPerMonthLabel: "How many commission statements do you reconcile each month?",
       vendorPlaceholder: "e.g. $6,400,000",
+      nonBookingPlaceholder: "e.g. $250,000",
+      numPropertiesPlaceholder: "e.g. 1",
       feePlaceholder: "e.g. 2.9%",
       adrPlaceholder: "e.g. 150",
       stayPlaceholder: "e.g. 3",
       invoicesPlaceholder: "e.g. 500",
       commissionStatementsPlaceholder: "e.g. 25",
-      impactHeading: "Estimated Impact",
+      impactHeading: "Estimated Annual Revenue Loss",
       impactFeesLabel: "Credit Card Fees Paid",
       impactBookingsLabel: "Equivalent Bookings Lost",
       impactNightsLabel: "Equivalent Room Nights Lost",
       impactPayrollLabel: "Cost of Manual Invoice and Commission Processing",
       impactOrText: "OR",
       calcButton: "How much can I get back?",
-      recoveryHeading: "Estimated Recovery with One Journey",
+      recoveryHeading: "Estimated Annual Recovery with One Journey",
       recoveryFeesLabel: "Credit Card Fees Recouped",
       recoveryPayrollLabel: "Cost Savings on Invoice and Commission Processing",
       recoveryOrText: "OR",
@@ -399,13 +411,17 @@
       subtitle: "Calcule cuánto ingreso por reservas puede recuperar su hotel a través de<br>la solución de One Journey.",
       languageLabel: "Idioma",
       currencyLabel: "Moneda",
+      numPropertiesLabel: "Number of Properties",
       vendorLabel: "Importe anual de reservas pagadas con tarjeta por huésped o tercero",
+      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
       processingFeeLabel: "¿Tasa de descuento? (%)",
       adrLabel: "Tarifa diaria promedio (ADR)",
       avgStayLabel: "Estancia media (noches)",
       invoicesPerMonthLabel: "¿Cuántas facturas procesa o concilia al mes?",
       commissionStatementsPerMonthLabel: "¿Cuántos estados de comisión concilia cada mes?",
       vendorPlaceholder: "p. ej. $6,400,000",
+      nonBookingPlaceholder: "e.g. $250,000",
+      numPropertiesPlaceholder: "e.g. 1",
       feePlaceholder: "p. ej. 2.9%",
       adrPlaceholder: "p. ej. 150",
       stayPlaceholder: "p. ej. 3",
@@ -432,13 +448,17 @@
       subtitle: "Estimez le montant des revenus de réservation que votre hôtel peut récupérer grâce<br>à la solution One Journey.",
       languageLabel: "Langue",
       currencyLabel: "Devise",
+      numPropertiesLabel: "Number of Properties",
       vendorLabel: "Montant annuel des réservations payées par carte par le client ou un tiers",
+      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
       processingFeeLabel: "Quel est le taux moyen de commission carte bancaire ? (%)",
       adrLabel: "Tarif journalier moyen (ADR)",
       avgStayLabel: "Durée moyenne de séjour",
       invoicesPerMonthLabel: "Combien de factures traitez-vous ou rapprochez-vous par mois ?",
       commissionStatementsPerMonthLabel: "Combien de relevés de commission rapprochez-vous chaque mois ?",
       vendorPlaceholder: "ex. 6 400 000 €",
+      nonBookingPlaceholder: "e.g. $250,000",
+      numPropertiesPlaceholder: "e.g. 1",
       feePlaceholder: "ex. 2,9 %",
       adrPlaceholder: "ex. 150",
       stayPlaceholder: "ex. 3",
@@ -465,13 +485,17 @@
       subtitle: "Schätzen Sie, wie viel Buchungsumsatz Ihr Hotel über<br>die One-Journey-Lösung zurückgewinnen kann.",
       languageLabel: "Sprache",
       currencyLabel: "Währung",
+      numPropertiesLabel: "Number of Properties",
       vendorLabel: "Jährlicher Buchungsbetrag, der per Kreditkarte von Gast oder Drittanbieter bezahlt wird",
+      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
       processingFeeLabel: "Wie hoch ist die durchschnittliche Kreditkartengebühr? (%)",
       adrLabel: "Durchschnittlicher Tagespreis (ADR)",
       avgStayLabel: "Durchschnittliche Aufenthaltsdauer",
       invoicesPerMonthLabel: "Wie viele Rechnungen bearbeiten oder stimmen Sie pro Monat ab?",
       commissionStatementsPerMonthLabel: "Wie viele Provisionsabrechnungen gleichen Sie pro Monat ab?",
       vendorPlaceholder: "z. B. 6.400.000 €",
+      nonBookingPlaceholder: "e.g. $250,000",
+      numPropertiesPlaceholder: "e.g. 1",
       feePlaceholder: "z. B. 2,9 %",
       adrPlaceholder: "z. B. 150",
       stayPlaceholder: "z. B. 3",
@@ -498,13 +522,17 @@
       subtitle: "احسب مقدار إيرادات الحجوزات التي يمكن لفندقك استعادتها من خلال<br>حل One Journey.",
       languageLabel: "اللغة",
       currencyLabel: "العملة",
+      numPropertiesLabel: "Number of Properties",
       vendorLabel: "إجمالي قيمة الحجوزات السنوية المدفوعة ببطاقة الائتمان من النزيل أو طرف ثالث",
+      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
       processingFeeLabel: "ما هي نسبة عمولة بطاقة الائتمان المتوسطة؟ (%)",
       adrLabel: "متوسط السعر اليومي للغرفة",
       avgStayLabel: "متوسط مدة الإقامة",
       invoicesPerMonthLabel: "كم عدد الفواتير التي تعالجها أو توفقها شهريًا؟",
       commissionStatementsPerMonthLabel: "كم عدد كشوف العمولات التي توفقها شهريًا؟",
       vendorPlaceholder: "مثال: ‎6,400,000‎",
+      nonBookingPlaceholder: "e.g. $250,000",
+      numPropertiesPlaceholder: "e.g. 1",
       feePlaceholder: "مثال: ‎2.9%‎",
       adrPlaceholder: "مثال: ‎150‎",
       stayPlaceholder: "مثال: ‎3‎",
@@ -539,7 +567,9 @@
 
     document.getElementById("languageLabel").textContent = t.languageLabel;
     document.getElementById("currencyLabel").textContent = t.currencyLabel;
+    document.getElementById("numPropertiesLabel").textContent = t.numPropertiesLabel;
     document.getElementById("vendorLabel").textContent = t.vendorLabel;
+    document.getElementById("nonBookingLabel").textContent = t.nonBookingLabel;
     document.getElementById("processingFeeLabel").textContent = t.processingFeeLabel;
     document.getElementById("adrLabel").textContent = t.adrLabel;
     document.getElementById("avgStayLabel").textContent = t.avgStayLabel;
@@ -547,6 +577,8 @@
     document.getElementById("commissionStatementsPerMonthLabel").textContent = t.commissionStatementsPerMonthLabel;
 
     document.getElementById("vendorSpend").placeholder = t.vendorPlaceholder;
+    document.getElementById("nonBookingSpend").placeholder = t.nonBookingPlaceholder;
+    document.getElementById("numProperties").placeholder = t.numPropertiesPlaceholder;
     document.getElementById("processingFee").placeholder = t.feePlaceholder;
     document.getElementById("adr").placeholder = t.adrPlaceholder;
     document.getElementById("avgStay").placeholder = t.stayPlaceholder;
@@ -587,7 +619,7 @@
     if (!el) return 0;
     let raw = el.value;
 
-    if (id === "vendorSpend") {
+    if (id === "vendorSpend" || id === "nonBookingSpend") {
       raw = raw.replace(/[^0-9]/g, "");
       return parseFloat(raw) || 0;
     } else {
@@ -598,7 +630,9 @@
 
   function getInputs() {
     const currency = document.getElementById("currency").value;
+    const numProperties = Math.max(1, Math.floor(getNumericFromInputById("numProperties") || 1));
     const bookingAmount = getNumericFromInputById("vendorSpend");
+    const nonBookingAmount = getNumericFromInputById("nonBookingSpend");
     const processingFee = getNumericFromInputById("processingFee");
     const adr = parseFloat(document.getElementById("adr").value) || 0;
     const avgStay = parseFloat(document.getElementById("avgStay").value) || 0;
@@ -606,7 +640,7 @@
     const invoicesPerMonth = Math.max(0, Math.floor(getNumericFromInputById("invoicesPerMonth") || 0));
     const commissionStatementsPerMonth = Math.max(0, Math.floor(getNumericFromInputById("commissionStatementsPerMonth") || 0));
 
-    return { currency, bookingAmount, processingFee, adr, avgStay, invoicesPerMonth, commissionStatementsPerMonth };
+    return { currency, numProperties, bookingAmount, nonBookingAmount, processingFee, adr, avgStay, invoicesPerMonth, commissionStatementsPerMonth };
   }
 
   function calcAnnualInvoiceCost(invoicesPerMonth) {
@@ -629,17 +663,19 @@
   }
 
   function renderImpact() {
-    const { currency, bookingAmount, processingFee, adr, avgStay, invoicesPerMonth, commissionStatementsPerMonth } = getInputs();
+    const { currency, bookingAmount, nonBookingAmount, processingFee, adr, avgStay, invoicesPerMonth, commissionStatementsPerMonth } = getInputs();
     const resultsEl = document.getElementById("results");
 
+    const totalCardAmount = bookingAmount + nonBookingAmount;
+
     // Require both processing fields before showing Estimated Impact
-    if (!(bookingAmount > 0 && processingFee > 0 && adr > 0 && avgStay > 0 && invoicesPerMonth > 0 && commissionStatementsPerMonth > 0)) {
+    if (!(totalCardAmount > 0 && processingFee > 0 && adr > 0 && avgStay > 0 && invoicesPerMonth > 0 && commissionStatementsPerMonth > 0)) {
       resultsEl.style.display = "none";
       return;
     }
 
     const feeRate = processingFee / 100;
-    const feesPaid = bookingAmount * feeRate;
+    const feesPaid = totalCardAmount * feeRate;
 
     const payrollSpent = calcAnnualManualProcessingCost(invoicesPerMonth, commissionStatementsPerMonth);
 
@@ -657,20 +693,32 @@
   }
 
   function renderRecovery() {
-    const { currency, bookingAmount, processingFee, adr, avgStay, invoicesPerMonth, commissionStatementsPerMonth } = getInputs();
+    const { currency, numProperties, bookingAmount, nonBookingAmount, processingFee, adr, avgStay, invoicesPerMonth, commissionStatementsPerMonth } = getInputs();
     const recoveryEl = document.getElementById("recovery");
     const calcBtn = document.getElementById("calcBtn");
 
-    if (!(bookingAmount > 0 && adr > 0 && avgStay > 0)) {
+    const totalCardAmount = bookingAmount + nonBookingAmount;
+
+    if (!(totalCardAmount > 0 && adr > 0 && avgStay > 0)) {
       recoveryEl.style.display = "none";
       return;
     }
+
+    const lang = document.getElementById("language").value;
+    const t = translations[lang] || translations.es;
+
+    const prefix = (numProperties > 1) ? "Average " : "";
+    document.getElementById("recoveryFeesLabel").textContent = prefix + t.recoveryFeesLabel;
+    document.getElementById("recoveryPayrollLabel").textContent = prefix + t.recoveryPayrollLabel;
+    document.getElementById("recoveryEffectiveFeeLabel").textContent = prefix + t.recoveryEffectiveFeeLabel;
+    document.getElementById("recoveryBookingsLabel").textContent = prefix + t.recoveryBookingsLabel;
+    document.getElementById("recoveryNightsLabel").textContent = prefix + t.recoveryNightsLabel;
 
     const lowerPayout = ["USD", "CAD"];
     const payoutRate = lowerPayout.includes(currency) ? 0.70 : 0.85;
     const rebateRate = 0.0125;
 
-    const feesRecouped = bookingAmount * payoutRate * rebateRate;
+    const feesRecouped = totalCardAmount * payoutRate * rebateRate;
 
     const manualProcessingCost = calcAnnualManualProcessingCost(invoicesPerMonth, commissionStatementsPerMonth);
     const processingSavings = manualProcessingCost * 0.90;
@@ -687,8 +735,8 @@
     document.getElementById("recoveryRoomNightsOut").textContent = roomNightsRecouped > 0 ? roomNightsRecouped.toFixed(0) : "-";
 
     let effectiveFeeDisplay = "-";
-    if (bookingAmount > 0 && processingFee > 0) {
-      const offsetPercent = (totalValueRecouped / bookingAmount) * 100;
+    if (totalCardAmount > 0 && processingFee > 0) {
+      const offsetPercent = (totalValueRecouped / totalCardAmount) * 100;
       let effectiveFee = processingFee - offsetPercent;
       if (effectiveFee < 0) effectiveFee = 0;
       effectiveFeeDisplay = effectiveFee.toFixed(2) + "%";
@@ -714,8 +762,28 @@
     }).format(numeric);
   }
 
+  function formatNonBookingInputDisplay() {
+    const currency = document.getElementById("currency").value;
+    const el = document.getElementById("nonBookingSpend");
+    const numeric = getNumericFromInputById("nonBookingSpend");
+    if (!numeric) {
+      el.value = "";
+      return;
+    }
+    el.value = new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency,
+      maximumFractionDigits: 0
+    }).format(numeric);
+  }
+
   function unformatVendorInput() {
     const el = document.getElementById("vendorSpend");
+    el.value = el.value.replace(/[^0-9]/g, "");
+  }
+
+  function unformatNonBookingInput() {
+    const el = document.getElementById("nonBookingSpend");
     el.value = el.value.replace(/[^0-9]/g, "");
   }
 
@@ -734,12 +802,13 @@
     el.value = el.value.replace(/[^0-9.]/g, "");
   }
 
-  ["vendorSpend", "processingFee", "adr", "avgStay", "invoicesPerMonth", "commissionStatementsPerMonth"].forEach(id => {
+  ["vendorSpend", "nonBookingSpend", "processingFee", "adr", "avgStay", "invoicesPerMonth", "commissionStatementsPerMonth", "numProperties"].forEach(id => {
     document.getElementById(id).addEventListener("input", renderImpact);
   });
 
   document.getElementById("currency").addEventListener("change", function () {
     formatVendorInputDisplay();
+    formatNonBookingInputDisplay();
     renderImpact();
   });
 
@@ -749,6 +818,13 @@
     renderImpact();
   });
   vendorInput.addEventListener("focus", unformatVendorInput);
+
+  const nonBookingInput = document.getElementById("nonBookingSpend");
+  nonBookingInput.addEventListener("blur", function () {
+    formatNonBookingInputDisplay();
+    renderImpact();
+  });
+  nonBookingInput.addEventListener("focus", unformatNonBookingInput);
 
   const feeInput = document.getElementById("processingFee");
   feeInput.addEventListener("blur", function () {
