@@ -304,8 +304,13 @@
         </div>
 
         <div class="metric">
-          <div class="metric-label" id="impactPayrollLabel">Cost of Manual Invoice and Commission Processing</div>
-          <div class="metric-value" id="impactPayrollOut"></div>
+          <div class="metric-label" id="impactNonCommissionPayrollLabel">Cost of Manual Non-Commission Invoice Processing</div>
+          <div class="metric-value" id="impactNonCommissionPayrollOut"></div>
+        </div>
+
+        <div class="metric">
+          <div class="metric-label" id="impactCommissionPayrollLabel">Cost of Manual Commission Processing</div>
+          <div class="metric-value" id="impactCommissionPayrollOut"></div>
         </div>
 
         <div class="metric-divider"></div>
@@ -334,8 +339,13 @@
         </div>
 
         <div class="metric">
-          <div class="metric-label" id="recoveryPayrollLabel">Cost Savings on Invoice and Commission Processing</div>
-          <div class="metric-value" id="recoveryPayrollOut"></div>
+          <div class="metric-label" id="recoveryNonCommissionPayrollLabel">Cost Savings on Non-Commission Invoice Processing</div>
+          <div class="metric-value" id="recoveryNonCommissionPayrollOut"></div>
+        </div>
+
+        <div class="metric">
+          <div class="metric-label" id="recoveryCommissionPayrollLabel">Cost Savings on Commission Processing</div>
+          <div class="metric-value" id="recoveryCommissionPayrollOut"></div>
         </div>
 
         <div class="metric-divider or-black"></div>
@@ -392,14 +402,16 @@
       commissionStatementsPlaceholder: "e.g. 25",
       impactHeading: "Estimated Annual Revenue Loss",
       impactFeesLabel: "Credit Card Fees Paid",
+      impactNonCommissionPayrollLabel: "Cost of Manual Non-Commission Invoice Processing",
+      impactCommissionPayrollLabel: "Cost of Manual Commission Processing",
       impactBookingsLabel: "Equivalent Bookings Lost",
       impactNightsLabel: "Equivalent Room Nights Lost",
-      impactPayrollLabel: "Cost of Manual Invoice and Commission Processing",
       impactOrText: "OR",
       calcButton: "How much can I get back?",
       recoveryHeading: "Estimated Annual Recovery with One Journey",
       recoveryFeesLabel: "Credit Card Fees Recouped",
-      recoveryPayrollLabel: "Cost Savings on Invoice and Commission Processing",
+      recoveryNonCommissionPayrollLabel: "Cost Savings on Non-Commission Invoice Processing",
+      recoveryCommissionPayrollLabel: "Cost Savings on Commission Processing",
       recoveryOrText: "OR",
       recoveryEffectiveFeeLabel: "Equivalent Reduced Credit Card Fee",
       recoveryBookingsLabel: "Bookings Recouped",
@@ -429,14 +441,16 @@
       commissionStatementsPlaceholder: "p. ej. 25",
       impactHeading: "Impacto estimado",
       impactFeesLabel: "Comisiones de tarjeta pagadas",
+      impactNonCommissionPayrollLabel: "Coste del procesamiento manual de facturas (no comisión)",
+      impactCommissionPayrollLabel: "Coste del procesamiento manual de comisiones",
       impactBookingsLabel: "Reservas equivalentes perdidas",
       impactNightsLabel: "Noches de habitación equivalentes perdidas",
-      impactPayrollLabel: "Coste del procesamiento manual de facturas y comisiones",
       impactOrText: "O",
       calcButton: "¿Cuánto puedo recuperar?",
       recoveryHeading: "Recuperación estimada con One Journey",
       recoveryFeesLabel: "Comisiones de tarjeta recuperadas",
-      recoveryPayrollLabel: "Ahorro de costes en el procesamiento de facturas y comisiones",
+      recoveryNonCommissionPayrollLabel: "Ahorro de costes en el procesamiento de facturas (no comisión)",
+      recoveryCommissionPayrollLabel: "Ahorro de costes en el procesamiento de comisiones",
       recoveryOrText: "O",
       recoveryEffectiveFeeLabel: "Tasa equivalente de comisión de tarjeta reducida",
       recoveryBookingsLabel: "Reservas recuperadas",
@@ -466,14 +480,16 @@
       commissionStatementsPlaceholder: "ex. 25",
       impactHeading: "Impact estimé",
       impactFeesLabel: "Frais de carte bancaire payés",
+      impactNonCommissionPayrollLabel: "Coût du traitement manuel des factures (hors commission)",
+      impactCommissionPayrollLabel: "Coût du traitement manuel des commissions",
       impactBookingsLabel: "Réservations équivalentes perdues",
       impactNightsLabel: "Nuits de chambre équivalentes perdues",
-      impactPayrollLabel: "Coût du traitement manuel des factures et commissions",
       impactOrText: "OU",
       calcButton: "Combien puis-je récupérer ?",
       recoveryHeading: "Recouvrement estimé avec One Journey",
       recoveryFeesLabel: "Frais de carte bancaire récupérés",
-      recoveryPayrollLabel: "Économies sur le traitement des factures et commissions",
+      recoveryNonCommissionPayrollLabel: "Économies sur le traitement des factures (hors commission)",
+      recoveryCommissionPayrollLabel: "Économies sur le traitement des commissions",
       recoveryOrText: "OU",
       recoveryEffectiveFeeLabel: "Commission carte bancaire équivalente réduite",
       recoveryBookingsLabel: "Réservations récupérées",
@@ -503,14 +519,16 @@
       commissionStatementsPlaceholder: "z. B. 25",
       impactHeading: "Geschätzte Auswirkungen",
       impactFeesLabel: "Gezahlte Kreditkartengebühren",
+      impactNonCommissionPayrollLabel: "Kosten der manuellen Rechnungsverarbeitung (ohne Provision)",
+      impactCommissionPayrollLabel: "Kosten der manuellen Provisionsverarbeitung",
       impactBookingsLabel: "Entgangene Buchungen (äquivalent)",
       impactNightsLabel: "Entgangene Übernachtungen (äquivalent)",
-      impactPayrollLabel: "Kosten der manuellen Rechnungs- und Provisionsverarbeitung",
       impactOrText: "ODER",
       calcButton: "Wie viel kann ich zurückholen?",
       recoveryHeading: "Geschätzte Rückgewinnung mit One Journey",
       recoveryFeesLabel: "Zurückgewonnene Kreditkartengebühren",
-      recoveryPayrollLabel: "Kosteneinsparungen bei der Rechnungs- und Provisionsverarbeitung",
+      recoveryNonCommissionPayrollLabel: "Kosteneinsparungen bei der Rechnungsverarbeitung (ohne Provision)",
+      recoveryCommissionPayrollLabel: "Kosteneinsparungen bei der Provisionsverarbeitung",
       recoveryOrText: "ODER",
       recoveryEffectiveFeeLabel: "Entspricht einer reduzierten Kreditkartengebühr",
       recoveryBookingsLabel: "Zurückgewonnene Buchungen",
@@ -540,14 +558,16 @@
       commissionStatementsPlaceholder: "مثال: ‎25‎",
       impactHeading: "الأثر التقديري",
       impactFeesLabel: "رسوم بطاقات الائتمان المدفوعة",
+      impactNonCommissionPayrollLabel: "تكلفة المعالجة اليدوية للفواتير (غير العمولة)",
+      impactCommissionPayrollLabel: "تكلفة المعالجة اليدوية للعمولات",
       impactBookingsLabel: "الحجوزات المفقودة (مكافئة)",
       impactNightsLabel: "ليالي الغرف المفقودة (مكافئة)",
-      impactPayrollLabel: "تكلفة المعالجة اليدوية للفواتير والعمولات",
       impactOrText: "أو",
       calcButton: "كم يمكنني استعادته؟",
       recoveryHeading: "الاسترداد التقديري مع One Journey",
       recoveryFeesLabel: "رسوم بطاقات الائتمان المستردة",
-      recoveryPayrollLabel: "توفير التكاليف في معالجة الفواتير والعمولات",
+      recoveryNonCommissionPayrollLabel: "توفير التكاليف لمعالجة الفواتير (غير العمولة)",
+      recoveryCommissionPayrollLabel: "توفير التكاليف لمعالجة العمولات",
       recoveryOrText: "أو",
       recoveryEffectiveFeeLabel: "نسبة عمولة بطاقة ائتمان مخفضة مكافئة",
       recoveryBookingsLabel: "الحجوزات المستردة",
@@ -587,16 +607,18 @@
 
     document.getElementById("impactHeading").textContent = t.impactHeading;
     document.getElementById("impactFeesLabel").textContent = t.impactFeesLabel;
+    document.getElementById("impactNonCommissionPayrollLabel").textContent = t.impactNonCommissionPayrollLabel;
+    document.getElementById("impactCommissionPayrollLabel").textContent = t.impactCommissionPayrollLabel;
     document.getElementById("impactBookingsLabel").textContent = t.impactBookingsLabel;
     document.getElementById("impactNightsLabel").textContent = t.impactNightsLabel;
-    document.getElementById("impactPayrollLabel").textContent = t.impactPayrollLabel;
     document.getElementById("impactOrText").textContent = t.impactOrText;
 
     document.getElementById("calcBtn").textContent = t.calcButton;
 
     document.getElementById("recoveryHeading").textContent = t.recoveryHeading;
     document.getElementById("recoveryFeesLabel").textContent = t.recoveryFeesLabel;
-    document.getElementById("recoveryPayrollLabel").textContent = t.recoveryPayrollLabel;
+    document.getElementById("recoveryNonCommissionPayrollLabel").textContent = t.recoveryNonCommissionPayrollLabel;
+    document.getElementById("recoveryCommissionPayrollLabel").textContent = t.recoveryCommissionPayrollLabel;
     document.getElementById("recoveryOrText").textContent = t.recoveryOrText;
     document.getElementById("recoveryEffectiveFeeLabel").textContent = t.recoveryEffectiveFeeLabel;
     document.getElementById("recoveryBookingsLabel").textContent = t.recoveryBookingsLabel;
@@ -658,12 +680,8 @@
     return annualStatements * hoursPerStatement * hourlyRate;
   }
 
-  function calcAnnualManualProcessingCost(invoicesPerMonth, commissionStatementsPerMonth) {
-    return calcAnnualInvoiceCost(invoicesPerMonth) + calcAnnualCommissionStatementCost(commissionStatementsPerMonth);
-  }
-
   function renderImpact() {
-    const { currency, bookingAmount, nonBookingAmount, processingFee, adr, avgStay, invoicesPerMonth, commissionStatementsPerMonth } = getInputs();
+    const { currency, numProperties, bookingAmount, nonBookingAmount, processingFee, adr, avgStay, invoicesPerMonth, commissionStatementsPerMonth } = getInputs();
     const resultsEl = document.getElementById("results");
 
     const totalCardAmount = bookingAmount + nonBookingAmount;
@@ -675,17 +693,22 @@
     }
 
     const feeRate = processingFee / 100;
-    const feesPaid = totalCardAmount * feeRate;
+    const feesPaidPerProperty = totalCardAmount * feeRate;
+    const invoiceCostPerProperty = calcAnnualInvoiceCost(invoicesPerMonth);
+    const commissionCostPerProperty = calcAnnualCommissionStatementCost(commissionStatementsPerMonth);
 
-    const payrollSpent = calcAnnualManualProcessingCost(invoicesPerMonth, commissionStatementsPerMonth);
+    const feesPaid = feesPaidPerProperty * numProperties;
+    const invoiceCost = invoiceCostPerProperty * numProperties;
+    const commissionCost = commissionCostPerProperty * numProperties;
 
     const revenuePerBooking = adr * avgStay;
-    const totalImpactValue = feesPaid + payrollSpent;
+    const totalImpactValue = feesPaid + invoiceCost + commissionCost;
     const bookingsLost = revenuePerBooking > 0 ? totalImpactValue / revenuePerBooking : 0;
     const roomNightsLost = bookingsLost * avgStay;
 
     document.getElementById("feesPaidOut").textContent = formatCurrency(feesPaid, currency);
-    document.getElementById("impactPayrollOut").textContent = payrollSpent > 0 ? formatCurrency(payrollSpent, currency) : "-";
+    document.getElementById("impactNonCommissionPayrollOut").textContent = invoiceCost > 0 ? formatCurrency(invoiceCost, currency) : "-";
+    document.getElementById("impactCommissionPayrollOut").textContent = commissionCost > 0 ? formatCurrency(commissionCost, currency) : "-";
     document.getElementById("bookingsLostOut").textContent = bookingsLost > 0 ? bookingsLost.toFixed(0) : "-";
     document.getElementById("roomNightsLostOut").textContent = roomNightsLost > 0 ? roomNightsLost.toFixed(0) : "-";
 
@@ -704,39 +727,38 @@
       return;
     }
 
-    const lang = document.getElementById("language").value;
-    const t = translations[lang] || translations.es;
-
-    const prefix = (numProperties > 1) ? "Average " : "";
-    document.getElementById("recoveryFeesLabel").textContent = prefix + t.recoveryFeesLabel;
-    document.getElementById("recoveryPayrollLabel").textContent = prefix + t.recoveryPayrollLabel;
-    document.getElementById("recoveryEffectiveFeeLabel").textContent = prefix + t.recoveryEffectiveFeeLabel;
-    document.getElementById("recoveryBookingsLabel").textContent = prefix + t.recoveryBookingsLabel;
-    document.getElementById("recoveryNightsLabel").textContent = prefix + t.recoveryNightsLabel;
-
     const lowerPayout = ["USD", "CAD"];
     const payoutRate = lowerPayout.includes(currency) ? 0.70 : 0.85;
-    const rebateRate = 0.0125;
+    const rebateRate = 0.01;
 
-    const feesRecouped = totalCardAmount * payoutRate * rebateRate;
+    const feesRecoupedPerProperty = totalCardAmount * payoutRate * rebateRate;
 
-    const manualProcessingCost = calcAnnualManualProcessingCost(invoicesPerMonth, commissionStatementsPerMonth);
-    const processingSavings = manualProcessingCost * 0.90;
+    const invoiceCostPerProperty = calcAnnualInvoiceCost(invoicesPerMonth);
+    const commissionCostPerProperty = calcAnnualCommissionStatementCost(commissionStatementsPerMonth);
+
+    const invoiceSavingsPerProperty = invoiceCostPerProperty * 0.90;
+    const commissionSavingsPerProperty = commissionCostPerProperty * 0.90;
+
+    const feesRecouped = feesRecoupedPerProperty * numProperties;
+    const invoiceSavings = invoiceSavingsPerProperty * numProperties;
+    const commissionSavings = commissionSavingsPerProperty * numProperties;
 
     const revenuePerBooking = adr * avgStay;
-    const totalValueRecouped = feesRecouped + processingSavings;
+    const totalValueRecouped = feesRecouped + invoiceSavings + commissionSavings;
 
     const bookingsRecouped = revenuePerBooking > 0 ? totalValueRecouped / revenuePerBooking : 0;
     const roomNightsRecouped = bookingsRecouped * avgStay;
 
     document.getElementById("recoveryFeesOut").textContent = feesRecouped > 0 ? formatCurrency(feesRecouped, currency) : "-";
-    document.getElementById("recoveryPayrollOut").textContent = processingSavings > 0 ? formatCurrency(processingSavings, currency) : "-";
+    document.getElementById("recoveryNonCommissionPayrollOut").textContent = invoiceSavings > 0 ? formatCurrency(invoiceSavings, currency) : "-";
+    document.getElementById("recoveryCommissionPayrollOut").textContent = commissionSavings > 0 ? formatCurrency(commissionSavings, currency) : "-";
     document.getElementById("recoveryBookingsOut").textContent = bookingsRecouped > 0 ? bookingsRecouped.toFixed(0) : "-";
     document.getElementById("recoveryRoomNightsOut").textContent = roomNightsRecouped > 0 ? roomNightsRecouped.toFixed(0) : "-";
 
     let effectiveFeeDisplay = "-";
     if (totalCardAmount > 0 && processingFee > 0) {
-      const offsetPercent = (totalValueRecouped / totalCardAmount) * 100;
+      const totalCardAmountAll = totalCardAmount * numProperties;
+      const offsetPercent = (totalValueRecouped / totalCardAmountAll) * 100;
       let effectiveFee = processingFee - offsetPercent;
       if (effectiveFee < 0) effectiveFee = 0;
       effectiveFeeDisplay = effectiveFee.toFixed(2) + "%";
