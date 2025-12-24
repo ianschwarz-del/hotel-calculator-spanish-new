@@ -137,7 +137,6 @@
       cursor: not-allowed;
     }
 
-    /* NEW: helper note between properties + spend fields */
     .helper-note {
       margin: 2px 0 12px;
       padding: 10px 12px;
@@ -278,9 +277,9 @@
       <label for="numProperties" id="numPropertiesLabel">Number of Properties</label>
       <input id="numProperties" type="number" min="1" step="1" placeholder="e.g. 1">
 
-      <!-- NEW: message between # properties + booking amount -->
       <div class="helper-note" id="perPropertyNote">
-        <strong>Note:</strong> The numbers entered below should be the <strong>average per property</strong>.
+        <strong id="perPropertyNotePrefix">Note:</strong>
+        <span id="perPropertyNoteText"> The numbers entered below should be the <strong>average per property</strong>.</span>
       </div>
 
       <label for="vendorSpend" id="vendorLabel">
@@ -406,6 +405,8 @@
       languageLabel: "Language",
       currencyLabel: "Currency",
       numPropertiesLabel: "Number of Properties",
+      perPropertyNotePrefix: "Note:",
+      perPropertyNoteText: 'The numbers entered below should be the <strong>average per property</strong>.',
       vendorLabel: "Annual Booking Amount Paid on Credit Card by Guest or 3rd-party",
       nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
       processingFeeLabel: "What is the average credit card processing fee? (%)",
@@ -444,17 +445,19 @@
       subtitle: "Calcule cuánto ingreso por reservas puede recuperar su hotel a través de<br>la solución de One Journey.",
       languageLabel: "Idioma",
       currencyLabel: "Moneda",
-      numPropertiesLabel: "Number of Properties",
+      numPropertiesLabel: "Número de propiedades",
+      perPropertyNotePrefix: "Nota:",
+      perPropertyNoteText: 'Los números ingresados a continuación deben ser el <strong>promedio por propiedad</strong>.',
       vendorLabel: "Importe anual de reservas pagadas con tarjeta por huésped o tercero",
-      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
+      nonBookingLabel: "Importe anual (no reservas) pagado con tarjeta por huésped o tercero",
       processingFeeLabel: "¿Tasa de descuento? (%)",
       adrLabel: "Tarifa diaria promedio (ADR)",
       avgStayLabel: "Estancia media (noches)",
       invoicesPerMonthLabel: "¿Cuántas facturas procesa o concilia al mes?",
       commissionStatementsPerMonthLabel: "¿Cuántos estados de comisión concilia cada mes?",
       vendorPlaceholder: "p. ej. $6,400,000",
-      nonBookingPlaceholder: "e.g. $250,000",
-      numPropertiesPlaceholder: "e.g. 1",
+      nonBookingPlaceholder: "p. ej. $250,000",
+      numPropertiesPlaceholder: "p. ej. 1",
       feePlaceholder: "p. ej. 2.9%",
       adrPlaceholder: "p. ej. 150",
       stayPlaceholder: "p. ej. 3",
@@ -483,17 +486,19 @@
       subtitle: "Estimez le montant des revenus de réservation que votre hôtel peut récupérer grâce<br>à la solution One Journey.",
       languageLabel: "Langue",
       currencyLabel: "Devise",
-      numPropertiesLabel: "Number of Properties",
+      numPropertiesLabel: "Nombre d’établissements",
+      perPropertyNotePrefix: "Note :",
+      perPropertyNoteText: 'Les chiffres saisis ci-dessous doivent correspondre à la <strong>moyenne par établissement</strong>.',
       vendorLabel: "Montant annuel des réservations payées par carte par le client ou un tiers",
-      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
+      nonBookingLabel: "Montant annuel (hors réservations) payé par carte par le client ou un tiers",
       processingFeeLabel: "Quel est le taux moyen de commission carte bancaire ? (%)",
       adrLabel: "Tarif journalier moyen (ADR)",
       avgStayLabel: "Durée moyenne de séjour",
       invoicesPerMonthLabel: "Combien de factures traitez-vous ou rapprochez-vous par mois ?",
       commissionStatementsPerMonthLabel: "Combien de relevés de commission rapprochez-vous chaque mois ?",
       vendorPlaceholder: "ex. 6 400 000 €",
-      nonBookingPlaceholder: "e.g. $250,000",
-      numPropertiesPlaceholder: "e.g. 1",
+      nonBookingPlaceholder: "ex. 250 000 €",
+      numPropertiesPlaceholder: "ex. 1",
       feePlaceholder: "ex. 2,9 %",
       adrPlaceholder: "ex. 150",
       stayPlaceholder: "ex. 3",
@@ -522,17 +527,19 @@
       subtitle: "Schätzen Sie, wie viel Buchungsumsatz Ihr Hotel über<br>die One-Journey-Lösung zurückgewinnen kann.",
       languageLabel: "Sprache",
       currencyLabel: "Währung",
-      numPropertiesLabel: "Number of Properties",
+      numPropertiesLabel: "Anzahl der Hotels",
+      perPropertyNotePrefix: "Hinweis:",
+      perPropertyNoteText: 'Die unten eingegebenen Werte sollten der <strong>Durchschnitt pro Hotel</strong> sein.',
       vendorLabel: "Jährlicher Buchungsbetrag, der per Kreditkarte von Gast oder Drittanbieter bezahlt wird",
-      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
+      nonBookingLabel: "Jährlicher Betrag (Nicht-Buchungen), der per Kreditkarte von Gast oder Drittanbieter bezahlt wird",
       processingFeeLabel: "Wie hoch ist die durchschnittliche Kreditkartengebühr? (%)",
       adrLabel: "Durchschnittlicher Tagespreis (ADR)",
       avgStayLabel: "Durchschnittliche Aufenthaltsdauer",
       invoicesPerMonthLabel: "Wie viele Rechnungen bearbeiten oder stimmen Sie pro Monat ab?",
       commissionStatementsPerMonthLabel: "Wie viele Provisionsabrechnungen gleichen Sie pro Monat ab?",
       vendorPlaceholder: "z. B. 6.400.000 €",
-      nonBookingPlaceholder: "e.g. $250,000",
-      numPropertiesPlaceholder: "e.g. 1",
+      nonBookingPlaceholder: "z. B. 250.000 €",
+      numPropertiesPlaceholder: "z. B. 1",
       feePlaceholder: "z. B. 2,9 %",
       adrPlaceholder: "z. B. 150",
       stayPlaceholder: "z. B. 3",
@@ -561,17 +568,19 @@
       subtitle: "احسب مقدار إيرادات الحجوزات التي يمكن لفندقك استعادتها من خلال<br>حل One Journey.",
       languageLabel: "اللغة",
       currencyLabel: "العملة",
-      numPropertiesLabel: "Number of Properties",
+      numPropertiesLabel: "عدد العقارات",
+      perPropertyNotePrefix: "ملاحظة:",
+      perPropertyNoteText: 'يجب أن تكون الأرقام المُدخلة أدناه هي <strong>المتوسط لكل عقار</strong>.',
       vendorLabel: "إجمالي قيمة الحجوزات السنوية المدفوعة ببطاقة الائتمان من النزيل أو طرف ثالث",
-      nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
+      nonBookingLabel: "إجمالي المبلغ السنوي (غير الحجوزات) المدفوع ببطاقة الائتمان من النزيل أو طرف ثالث",
       processingFeeLabel: "ما هي نسبة عمولة بطاقة الائتمان المتوسطة؟ (%)",
       adrLabel: "متوسط السعر اليومي للغرفة",
       avgStayLabel: "متوسط مدة الإقامة",
       invoicesPerMonthLabel: "كم عدد الفواتير التي تعالجها أو توفقها شهريًا؟",
       commissionStatementsPerMonthLabel: "كم عدد كشوف العمولات التي توفقها شهريًا؟",
       vendorPlaceholder: "مثال: ‎6,400,000‎",
-      nonBookingPlaceholder: "e.g. $250,000",
-      numPropertiesPlaceholder: "e.g. 1",
+      nonBookingPlaceholder: "مثال: ‎250,000‎",
+      numPropertiesPlaceholder: "مثال: 1",
       feePlaceholder: "مثال: ‎2.9%‎",
       adrPlaceholder: "مثال: ‎150‎",
       stayPlaceholder: "مثال: ‎3‎",
@@ -609,6 +618,11 @@
     document.getElementById("languageLabel").textContent = t.languageLabel;
     document.getElementById("currencyLabel").textContent = t.currencyLabel;
     document.getElementById("numPropertiesLabel").textContent = t.numPropertiesLabel;
+
+    // NEW: translate the note block
+    document.getElementById("perPropertyNotePrefix").textContent = t.perPropertyNotePrefix;
+    document.getElementById("perPropertyNoteText").innerHTML = " " + t.perPropertyNoteText;
+
     document.getElementById("vendorLabel").textContent = t.vendorLabel;
     document.getElementById("nonBookingLabel").textContent = t.nonBookingLabel;
     document.getElementById("processingFeeLabel").textContent = t.processingFeeLabel;
