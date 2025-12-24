@@ -136,6 +136,22 @@
       opacity: 0.6;
       cursor: not-allowed;
     }
+
+    /* NEW: helper note between properties + spend fields */
+    .helper-note {
+      margin: 2px 0 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(17, 24, 39, 0.04);
+      color: var(--text-main);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .helper-note strong {
+      font-weight: 600;
+    }
+
     .results {
       margin-top: 18px;
       padding-top: 12px;
@@ -261,6 +277,11 @@
 
       <label for="numProperties" id="numPropertiesLabel">Number of Properties</label>
       <input id="numProperties" type="number" min="1" step="1" placeholder="e.g. 1">
+
+      <!-- NEW: message between # properties + booking amount -->
+      <div class="helper-note" id="perPropertyNote">
+        <strong>Note:</strong> The numbers entered below should be the <strong>average per property</strong>.
+      </div>
 
       <label for="vendorSpend" id="vendorLabel">
         Annual Booking Amount Paid on Credit Card by Guest or 3rd-party
