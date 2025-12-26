@@ -176,6 +176,25 @@
       font-weight: 600;
       text-align: right;
     }
+
+    /* NEW: "total" rows pop */
+    .metric.total {
+      margin-top: 8px;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      background: rgba(17, 24, 39, 0.04);
+    }
+    .metric.total .metric-label {
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .metric.total .metric-value {
+      font-weight: 800;
+      font-size: 16px;
+    }
+
     .metric-divider {
       border-top: 1px dotted var(--border);
       margin: 10px 0 6px;
@@ -394,7 +413,7 @@
           <div class="metric-value" id="impactCommissionPayrollOut"></div>
         </div>
 
-        <div class="metric">
+        <div class="metric total">
           <div class="metric-label" id="impactTotalLostLabel">Total Lost Revenue Annually</div>
           <div class="metric-value" id="impactTotalLostOut"></div>
         </div>
@@ -434,7 +453,7 @@
           <div class="metric-value" id="recoveryCommissionPayrollOut"></div>
         </div>
 
-        <div class="metric">
+        <div class="metric total">
           <div class="metric-label" id="recoveryAnnualSavingsLabel">Annual Cost Savings Through One Journey</div>
           <div class="metric-value" id="recoveryAnnualSavingsOut"></div>
         </div>
