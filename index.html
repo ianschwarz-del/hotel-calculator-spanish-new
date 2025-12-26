@@ -227,6 +227,59 @@
       margin-bottom: 10px;
     }
 
+    /* Tooltip */
+    .label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .tooltip {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1;
+      cursor: help;
+      flex: 0 0 auto;
+      user-select: none;
+    }
+    .tooltip:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(17,24,39,0.08);
+    }
+    .tooltip .tooltip-bubble {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 8px);
+      width: 260px;
+      max-width: 70vw;
+      background: #111827;
+      color: #ffffff;
+      padding: 10px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      line-height: 1.35;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: opacity 0.12s ease, transform 0.12s ease;
+      z-index: 20;
+    }
+    .tooltip:hover .tooltip-bubble,
+    .tooltip:focus .tooltip-bubble {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 480px) {
       .language-switch {
         top: 4px;
@@ -292,9 +345,17 @@
       </label>
       <input id="nonBookingSpend" type="text" placeholder="e.g. $250,000">
 
-      <label for="processingFee" id="processingFeeLabel">
-        What is the average credit card processing fee? (%)
-      </label>
+      <div class="label-row">
+        <label for="processingFee" id="processingFeeLabel" style="margin:0;">
+          What is the average credit card processing fee? (%)
+        </label>
+        <span class="tooltip" tabindex="0" aria-label="Info">
+          ?
+          <span class="tooltip-bubble" id="processingFeeTooltipText">
+            Credit Card Processing Fees are typically around 3% and are split amongst the issuing bank, credit card companies, and the payment processor.
+          </span>
+        </span>
+      </div>
       <input id="processingFee" type="text" placeholder="e.g. 2.9%">
 
       <div class="row">
@@ -333,6 +394,11 @@
           <div class="metric-value" id="impactCommissionPayrollOut"></div>
         </div>
 
+        <div class="metric">
+          <div class="metric-label" id="impactTotalLostLabel">Total Lost Revenue Annually</div>
+          <div class="metric-value" id="impactTotalLostOut"></div>
+        </div>
+
         <div class="metric-divider"></div>
         <div class="divider-or" id="impactOrText">OR</div>
 
@@ -366,6 +432,11 @@
         <div class="metric">
           <div class="metric-label" id="recoveryCommissionPayrollLabel">Cost Savings on Commission Processing</div>
           <div class="metric-value" id="recoveryCommissionPayrollOut"></div>
+        </div>
+
+        <div class="metric">
+          <div class="metric-label" id="recoveryAnnualSavingsLabel">Annual Cost Savings Through One Journey</div>
+          <div class="metric-value" id="recoveryAnnualSavingsOut"></div>
         </div>
 
         <div class="metric-divider or-black"></div>
@@ -410,6 +481,7 @@
       vendorLabel: "Annual Booking Amount Paid on Credit Card by Guest or 3rd-party",
       nonBookingLabel: "Annual Non-Booking Amount Paid on Credit Card by Guest or 3rd-party",
       processingFeeLabel: "What is the average credit card processing fee? (%)",
+      processingFeeTooltipText: "Credit Card Processing Fees are typically around 3% and are split amongst the issuing bank, credit card companies, and the payment processor.",
       adrLabel: "Average daily rate (ADR)",
       avgStayLabel: "Average length of stay",
       invoicesPerMonthLabel: "How many non-commision invoices do you process or reconcile per month?",
@@ -426,6 +498,7 @@
       impactFeesLabel: "Credit Card Fees Paid",
       impactNonCommissionPayrollLabel: "Cost of Manual Non-Commission Invoice Processing",
       impactCommissionPayrollLabel: "Cost of Manual Commission Processing",
+      impactTotalLostLabel: "Total Lost Revenue Annually",
       impactBookingsLabel: "Equivalent Bookings Lost",
       impactNightsLabel: "Equivalent Room Nights Lost",
       impactOrText: "OR",
@@ -434,6 +507,7 @@
       recoveryFeesLabel: "Credit Card Fees Recouped",
       recoveryNonCommissionPayrollLabel: "Cost Savings on Non-Commission Invoice Processing",
       recoveryCommissionPayrollLabel: "Cost Savings on Commission Processing",
+      recoveryAnnualSavingsLabel: "Annual Cost Savings Through One Journey",
       recoveryOrText: "OR",
       recoveryEffectiveFeeLabel: "Equivalent Reduced Credit Card Fee",
       recoveryBookingsLabel: "Bookings Recouped",
@@ -451,6 +525,7 @@
       vendorLabel: "Importe anual de reservas pagadas con tarjeta por huésped o tercero",
       nonBookingLabel: "Importe anual (no reservas) pagado con tarjeta por huésped o tercero",
       processingFeeLabel: "¿Tasa de descuento? (%)",
+      processingFeeTooltipText: "Las comisiones de procesamiento de tarjetas suelen rondar el 3% y se reparten entre el banco emisor, las redes de tarjetas y el procesador de pagos.",
       adrLabel: "Tarifa diaria promedio (ADR)",
       avgStayLabel: "Estancia media (noches)",
       invoicesPerMonthLabel: "¿Cuántas facturas procesa o concilia al mes?",
@@ -467,6 +542,7 @@
       impactFeesLabel: "Comisiones de tarjeta pagadas",
       impactNonCommissionPayrollLabel: "Coste del procesamiento manual de facturas (no comisión)",
       impactCommissionPayrollLabel: "Coste del procesamiento manual de comisiones",
+      impactTotalLostLabel: "Ingresos totales perdidos al año",
       impactBookingsLabel: "Reservas equivalentes perdidas",
       impactNightsLabel: "Noches de habitación equivalentes perdidas",
       impactOrText: "O",
@@ -475,6 +551,7 @@
       recoveryFeesLabel: "Comisiones de tarjeta recuperadas",
       recoveryNonCommissionPayrollLabel: "Ahorro de costes en el procesamiento de facturas (no comisión)",
       recoveryCommissionPayrollLabel: "Ahorro de costes en el procesamiento de comisiones",
+      recoveryAnnualSavingsLabel: "Ahorro anual de costes con One Journey",
       recoveryOrText: "O",
       recoveryEffectiveFeeLabel: "Tasa equivalente de comisión de tarjeta reducida",
       recoveryBookingsLabel: "Reservas recuperadas",
@@ -492,6 +569,7 @@
       vendorLabel: "Montant annuel des réservations payées par carte par le client ou un tiers",
       nonBookingLabel: "Montant annuel (hors réservations) payé par carte par le client ou un tiers",
       processingFeeLabel: "Quel est le taux moyen de commission carte bancaire ? (%)",
+      processingFeeTooltipText: "Les frais de traitement des cartes sont généralement d’environ 3 % et sont répartis entre la banque émettrice, les réseaux de cartes et le prestataire de paiement.",
       adrLabel: "Tarif journalier moyen (ADR)",
       avgStayLabel: "Durée moyenne de séjour",
       invoicesPerMonthLabel: "Combien de factures traitez-vous ou rapprochez-vous par mois ?",
@@ -508,6 +586,7 @@
       impactFeesLabel: "Frais de carte bancaire payés",
       impactNonCommissionPayrollLabel: "Coût du traitement manuel des factures (hors commission)",
       impactCommissionPayrollLabel: "Coût du traitement manuel des commissions",
+      impactTotalLostLabel: "Revenus perdus totaux par an",
       impactBookingsLabel: "Réservations équivalentes perdues",
       impactNightsLabel: "Nuits de chambre équivalentes perdues",
       impactOrText: "OU",
@@ -516,6 +595,7 @@
       recoveryFeesLabel: "Frais de carte bancaire récupérés",
       recoveryNonCommissionPayrollLabel: "Économies sur le traitement des factures (hors commission)",
       recoveryCommissionPayrollLabel: "Économies sur le traitement des commissions",
+      recoveryAnnualSavingsLabel: "Économies annuelles grâce à One Journey",
       recoveryOrText: "OU",
       recoveryEffectiveFeeLabel: "Commission carte bancaire équivalente réduite",
       recoveryBookingsLabel: "Réservations récupérées",
@@ -533,6 +613,7 @@
       vendorLabel: "Jährlicher Buchungsbetrag, der per Kreditkarte von Gast oder Drittanbieter bezahlt wird",
       nonBookingLabel: "Jährlicher Betrag (Nicht-Buchungen), der per Kreditkarte von Gast oder Drittanbieter bezahlt wird",
       processingFeeLabel: "Wie hoch ist die durchschnittliche Kreditkartengebühr? (%)",
+      processingFeeTooltipText: "Kreditkartenbearbeitungsgebühren liegen typischerweise bei etwa 3 % und werden zwischen der ausgebenden Bank, den Kartennetzwerken und dem Zahlungsabwickler aufgeteilt.",
       adrLabel: "Durchschnittlicher Tagespreis (ADR)",
       avgStayLabel: "Durchschnittliche Aufenthaltsdauer",
       invoicesPerMonthLabel: "Wie viele Rechnungen bearbeiten oder stimmen Sie pro Monat ab?",
@@ -549,6 +630,7 @@
       impactFeesLabel: "Gezahlte Kreditkartengebühren",
       impactNonCommissionPayrollLabel: "Kosten der manuellen Rechnungsverarbeitung (ohne Provision)",
       impactCommissionPayrollLabel: "Kosten der manuellen Provisionsverarbeitung",
+      impactTotalLostLabel: "Gesamter entgangener Umsatz pro Jahr",
       impactBookingsLabel: "Entgangene Buchungen (äquivalent)",
       impactNightsLabel: "Entgangene Übernachtungen (äquivalent)",
       impactOrText: "ODER",
@@ -557,6 +639,7 @@
       recoveryFeesLabel: "Zurückgewonnene Kreditkartengebühren",
       recoveryNonCommissionPayrollLabel: "Kosteneinsparungen bei der Rechnungsverarbeitung (ohne Provision)",
       recoveryCommissionPayrollLabel: "Kosteneinsparungen bei der Provisionsverarbeitung",
+      recoveryAnnualSavingsLabel: "Jährliche Kosteneinsparungen durch One Journey",
       recoveryOrText: "ODER",
       recoveryEffectiveFeeLabel: "Entspricht einer reduzierten Kreditkartengebühr",
       recoveryBookingsLabel: "Zurückgewonnene Buchungen",
@@ -572,8 +655,9 @@
       perPropertyNotePrefix: "ملاحظة:",
       perPropertyNoteText: 'يجب أن تكون الأرقام المُدخلة أدناه هي <strong>المتوسط لكل عقار</strong>.',
       vendorLabel: "إجمالي قيمة الحجوزات السنوية المدفوعة ببطاقة الائتمان من النزيل أو طرف ثالث",
-      nonBookingLabel: "إجمالي المبلغ السنوي (غير الحجوزات) المدفوع ببطاقة الائتمان من النزيل أو طرف ثالث",
+      nonBookingLabel: "إجمالي المبلغ السنوي (غير الحجوزات) المدفووع ببطاقة الائتمان من النزيل أو طرف ثالث",
       processingFeeLabel: "ما هي نسبة عمولة بطاقة الائتمان المتوسطة؟ (%)",
+      processingFeeTooltipText: "رسوم معالجة بطاقات الائتمان تكون عادةً حوالي 3% ويتم توزيعها بين البنك المُصدِر وشبكات البطاقات ومعالج الدفع.",
       adrLabel: "متوسط السعر اليومي للغرفة",
       avgStayLabel: "متوسط مدة الإقامة",
       invoicesPerMonthLabel: "كم عدد الفواتير التي تعالجها أو توفقها شهريًا؟",
@@ -590,6 +674,7 @@
       impactFeesLabel: "رسوم بطاقات الائتمان المدفوعة",
       impactNonCommissionPayrollLabel: "تكلفة المعالجة اليدوية للفواتير (غير العمولة)",
       impactCommissionPayrollLabel: "تكلفة المعالجة اليدوية للعمولات",
+      impactTotalLostLabel: "إجمالي الإيرادات المفقودة سنويًا",
       impactBookingsLabel: "الحجوزات المفقودة (مكافئة)",
       impactNightsLabel: "ليالي الغرف المفقودة (مكافئة)",
       impactOrText: "أو",
@@ -598,6 +683,7 @@
       recoveryFeesLabel: "رسوم بطاقات الائتمان المستردة",
       recoveryNonCommissionPayrollLabel: "توفير التكاليف لمعالجة الفواتير (غير العمولة)",
       recoveryCommissionPayrollLabel: "توفير التكاليف لمعالجة العمولات",
+      recoveryAnnualSavingsLabel: "التوفير السنوي في التكاليف عبر One Journey",
       recoveryOrText: "أو",
       recoveryEffectiveFeeLabel: "نسبة عمولة بطاقة ائتمان مخفضة مكافئة",
       recoveryBookingsLabel: "الحجوزات المستردة",
@@ -619,13 +705,13 @@
     document.getElementById("currencyLabel").textContent = t.currencyLabel;
     document.getElementById("numPropertiesLabel").textContent = t.numPropertiesLabel;
 
-    // NEW: translate the note block
     document.getElementById("perPropertyNotePrefix").textContent = t.perPropertyNotePrefix;
     document.getElementById("perPropertyNoteText").innerHTML = " " + t.perPropertyNoteText;
 
     document.getElementById("vendorLabel").textContent = t.vendorLabel;
     document.getElementById("nonBookingLabel").textContent = t.nonBookingLabel;
     document.getElementById("processingFeeLabel").textContent = t.processingFeeLabel;
+    document.getElementById("processingFeeTooltipText").textContent = t.processingFeeTooltipText;
     document.getElementById("adrLabel").textContent = t.adrLabel;
     document.getElementById("avgStayLabel").textContent = t.avgStayLabel;
     document.getElementById("invoicesPerMonthLabel").textContent = t.invoicesPerMonthLabel;
@@ -644,6 +730,7 @@
     document.getElementById("impactFeesLabel").textContent = t.impactFeesLabel;
     document.getElementById("impactNonCommissionPayrollLabel").textContent = t.impactNonCommissionPayrollLabel;
     document.getElementById("impactCommissionPayrollLabel").textContent = t.impactCommissionPayrollLabel;
+    document.getElementById("impactTotalLostLabel").textContent = t.impactTotalLostLabel;
     document.getElementById("impactBookingsLabel").textContent = t.impactBookingsLabel;
     document.getElementById("impactNightsLabel").textContent = t.impactNightsLabel;
     document.getElementById("impactOrText").textContent = t.impactOrText;
@@ -654,6 +741,7 @@
     document.getElementById("recoveryFeesLabel").textContent = t.recoveryFeesLabel;
     document.getElementById("recoveryNonCommissionPayrollLabel").textContent = t.recoveryNonCommissionPayrollLabel;
     document.getElementById("recoveryCommissionPayrollLabel").textContent = t.recoveryCommissionPayrollLabel;
+    document.getElementById("recoveryAnnualSavingsLabel").textContent = t.recoveryAnnualSavingsLabel;
     document.getElementById("recoveryOrText").textContent = t.recoveryOrText;
     document.getElementById("recoveryEffectiveFeeLabel").textContent = t.recoveryEffectiveFeeLabel;
     document.getElementById("recoveryBookingsLabel").textContent = t.recoveryBookingsLabel;
@@ -721,7 +809,6 @@
 
     const totalCardAmount = bookingAmount + nonBookingAmount;
 
-    // Require both processing fields before showing Estimated Impact
     if (!(totalCardAmount > 0 && processingFee > 0 && adr > 0 && avgStay > 0 && invoicesPerMonth > 0 && commissionStatementsPerMonth > 0)) {
       resultsEl.style.display = "none";
       return;
@@ -744,6 +831,7 @@
     document.getElementById("feesPaidOut").textContent = formatCurrency(feesPaid, currency);
     document.getElementById("impactNonCommissionPayrollOut").textContent = invoiceCost > 0 ? formatCurrency(invoiceCost, currency) : "-";
     document.getElementById("impactCommissionPayrollOut").textContent = commissionCost > 0 ? formatCurrency(commissionCost, currency) : "-";
+    document.getElementById("impactTotalLostOut").textContent = totalImpactValue > 0 ? formatCurrency(totalImpactValue, currency) : "-";
     document.getElementById("bookingsLostOut").textContent = bookingsLost > 0 ? bookingsLost.toFixed(0) : "-";
     document.getElementById("roomNightsLostOut").textContent = roomNightsLost > 0 ? roomNightsLost.toFixed(0) : "-";
 
@@ -787,6 +875,7 @@
     document.getElementById("recoveryFeesOut").textContent = feesRecouped > 0 ? formatCurrency(feesRecouped, currency) : "-";
     document.getElementById("recoveryNonCommissionPayrollOut").textContent = invoiceSavings > 0 ? formatCurrency(invoiceSavings, currency) : "-";
     document.getElementById("recoveryCommissionPayrollOut").textContent = commissionSavings > 0 ? formatCurrency(commissionSavings, currency) : "-";
+    document.getElementById("recoveryAnnualSavingsOut").textContent = totalValueRecouped > 0 ? formatCurrency(totalValueRecouped, currency) : "-";
     document.getElementById("recoveryBookingsOut").textContent = bookingsRecouped > 0 ? bookingsRecouped.toFixed(0) : "-";
     document.getElementById("recoveryRoomNightsOut").textContent = roomNightsRecouped > 0 ? roomNightsRecouped.toFixed(0) : "-";
 
